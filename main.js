@@ -68,10 +68,6 @@ const yStartAnt = yCanvaPos + 1;
 
 let ants = [];
 
-function outputUpdate(vol) {
-    document.querySelector('#agents').value = vol;
-}
-
 function addAnt(width, height, size) {
     //! does not work so well
     //! https://www.w3schools.com/colors/colors_rgb.asp
