@@ -28,9 +28,6 @@ function Ant(x, y, size = 1, color) {
 
     Ant.prototype.wander = function () {
 
-        //! Edges are still to define, ants can easily escape at the moment
-        // let fx = random(-10, 10);
-        // let fy = random(-10, 10);
         let fx = random(-antSpeed, antSpeed);
         let fy = random(-antSpeed, antSpeed);
 
