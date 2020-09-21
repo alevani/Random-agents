@@ -51,13 +51,23 @@ function Ant(x, y, size = 1, color) {
     }
 }
 
+
 const xCanvasize = 700;
 const yCanvasize = 400;
 const xCanvaPos = width / 2 - xCanvasize / 2;
 const yCanvaPos = height / 2 - yCanvasize / 2;
-let antSpeed = $('#speed').val();
+
 const size = 2;
+let antSpeed = $('#speed').val();
 let nbAgent = $('#points').val();
+
+// center
+// const xStartAnt = width / 2;
+// const yStartAnt = height / 2;
+
+// top left
+const xStartAnt = xCanvaPos + 1;
+const yStartAnt = yCanvaPos + 1;
 
 let ants = [];
 
@@ -70,7 +80,7 @@ function addAnt(width, height, size) {
     //! https://www.w3schools.com/colors/colors_rgb.asp
     const shade = random(0, 70);
     let ant = new Ant(
-        width / 2, height / 2,
+        width, height,
         size,
         'rgb(' + random(140, 255) + ',' + shade + ',' + shade + ')',
     );
@@ -79,7 +89,7 @@ function addAnt(width, height, size) {
 }
 
 while (ants.length < nbAgent) {
-    addAnt(width, height, size);
+    addAnt(xStartAnt, yStartAnt, size);
 }
 
 function runAgents() {
@@ -93,7 +103,7 @@ function runAgents() {
     if (new_nbAgent > nbAgent) {
         while (ants.length < new_nbAgent) {
             console.log(ants.length);
-            addAnt(width, height, size);
+            addAnt(xStartAnt, yStartAnt, size);
         }
     } else if (new_nbAgent < nbAgent) {
         while (ants.length > new_nbAgent) {
@@ -101,6 +111,8 @@ function runAgents() {
             ants.pop();
         }
     }
+
+    nbAgent = new_nbAgent;
 
     // Draw a rectangle in the center of the canvas of size xCanvasize x yCanvasize
     ctx.strokeStyle = 'white';
