@@ -3,6 +3,7 @@ const Msun = 1.989 * 10^30 //kg
 const Mearth = 5.98 * 10^24 //kg
 
 // Might be useful https://evgenii.com/blog/earth-orbit-simulation/
+// some more .. https://evgenii.com/blog/three-body-problem-simulator/
 
 const Xcenter = window.innerWidth / 2;
 const Ycenter = window.innerHeight / 2;
