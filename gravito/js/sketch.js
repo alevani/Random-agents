@@ -4,6 +4,7 @@ const Mearth = 5.98 * 10^24 //kg
 
 // Might be useful https://evgenii.com/blog/earth-orbit-simulation/
 // some more .. https://evgenii.com/blog/three-body-problem-simulator/
+//! and some moooore : https://medium.com/analytics-vidhya/simulating-the-solar-system-with-under-100-lines-of-python-code-5c53b3039fc6
 
 const Xcenter = window.innerWidth / 2;
 const Ycenter = window.innerHeight / 2;
