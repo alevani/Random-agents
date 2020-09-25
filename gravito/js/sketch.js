@@ -1,5 +1,13 @@
-let InterstellarObjects = [];
+const G = 6.673 * 10^11 //N•m2/kg2
+const Msun = 1.989 * 10^30 //kg
+const Mearth = 5.98 * 10^24 //kg
 
+// Might be useful https://evgenii.com/blog/earth-orbit-simulation/
+
+const Xcenter = window.innerWidth / 2;
+const Ycenter = window.innerHeight / 2;
+
+let InterstellarObjects = [];
 let InterstellarObject = function (m, x, y) {
     this.mass = m;
     this.position = createVector(x, y);
@@ -14,8 +22,16 @@ let InterstellarObject = function (m, x, y) {
     }
 
     InterstellarObject.prototype.update = function () {
-        // Velocity changes according to acceleration
-        this.velocity.add(this.acceleration);
+        // Distance between two object = R
+        let Dobj_sun = Math.sqrt((Xcenter - this.position.x) ^ 2 + (Ycenter - this.position.y) ^2);
+        
+        // Orbital speed v = Math.sqrt(G * Msun / Dobj_sun)
+        
+        // Velocity changes according to newton's law
+        this.velocity.add();
+        
+        // // Velocity changes according to acceleration
+        // this.velocity.add(this.acceleration);
 
         // position changes by velocity
         this.position.add(this.velocity);
@@ -25,6 +41,9 @@ let InterstellarObject = function (m, x, y) {
     }
 
     InterstellarObject.prototype.applyForce = function (force) {
+        const R = Math.sqrt((Xcenter - this.position.x) ^ 2 + (Ycenter - this.position.y) ^2);
+        const a = (G * Msun) / R^2
+
         let f = p5.Vector.div(force, this.mass);
         this.acceleration.add(f);
     }
@@ -35,7 +54,7 @@ function setup() {
 
     // Safe set the sun in the center
     background("#0c1f36");
-    ellipse(window.innerWidth / 2, window.innerHeight / 2, 80, 80);
+    ellipse(Xcenter, Ycenter, 80, 80);
 }
 
 function mousePressed() {
@@ -46,7 +65,7 @@ function mousePressed() {
 function draw_sun() {
     fill(color('#fff236'));
     noStroke();
-    ellipse(window.innerWidth / 2, window.innerHeight / 2, 80, 80);
+    ellipse(Xcenter, Ycenter, 80, 80);
 }
 
 function draw() {
